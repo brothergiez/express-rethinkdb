@@ -35,7 +35,7 @@ curl --request POST \
 
 ```sh
 curl --request GET \
-  --url http://localhost:3010/user/your-parameter
+  --url http://localhost:3010/user/your-username
 ```
 
 **Get all records :**
