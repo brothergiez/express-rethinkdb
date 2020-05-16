@@ -20,6 +20,7 @@ npm run dev
 
 Run via curl:
 **Create new record :**
+
 ```sh
 curl --request POST \
   --url http://localhost:3010/user \
@@ -29,13 +30,16 @@ curl --request POST \
 	"password": "my-password-here"
 }	'
 ```
+
 **Get single Record :**
+
 ```sh
 curl --request GET \
   --url http://localhost:3010/user/your-parameter
 ```
 
 **Get all records :**
+
 ```sh
 curl --request GET \
   --url http://localhost:3010/users
