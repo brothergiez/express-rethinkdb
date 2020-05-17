@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/users', async (req, res) => {
-  const { UserDbConnector } = res.locals;
+const {
+  handlers: { createHandler } 
+} = require('custom-error-exceptions');
 
-  const getAllUsers = await UserDbConnector.find();
-  res.send(getAllUsers);
-});
+const { getAllUsersController: handler } = require('../../controllers')
+
+router.get('/users', createHandler(handler));
 
 module.exports = router;

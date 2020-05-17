@@ -1,12 +1,10 @@
+const { throwIfMissing } = require('../utils');
+
 class BaseModel {
   constructor(opts) {
     Object.assign(this, opts);
-    if (!this.db) {
-      throw new Error('Database must be fullfilled');
-    }
-    if (!this.model) {
-      throw new Error('Database must be fullfilled');
-    }
+    throwIfMissing(this.db, 'Database must be fullfilled');
+    throwIfMissing(this.model, 'Model cant be null');
     this.orm = this.db.r;
   }
 

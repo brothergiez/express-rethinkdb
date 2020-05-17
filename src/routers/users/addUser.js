@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/user', async (req, res) => {
-  const data = req.body;
-  const { UserDbConnector } = res.locals;
+const {
+  handlers: { createHandler } 
+} = require('custom-error-exceptions');
 
-  const createUser = await UserDbConnector.insertOne(data);
-  res.send(createUser);
-});
+const { addUserController: handler } = require('../../controllers')
+
+router.post('/user', createHandler(handler));
 
 module.exports = router;

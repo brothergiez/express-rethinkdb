@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const {
+  handlers: { createHandler } 
+} = require('custom-error-exceptions');
 
-router.get('/user/:username', async (req, res) => {
-  const { UserDbConnector } = res.locals;
-  const username = req.params.username;
-  const user = await UserDbConnector.findWithFilter({username});
-  res.send(user);
-});
+const { getUserController: handler } = require('../../controllers')
+
+router.get('/user/:username', createHandler(handler));
 
 module.exports = router;
