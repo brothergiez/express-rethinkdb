@@ -1,4 +1,4 @@
-const { errors: { InternalServerError } } = require('custom-error-exceptions')
+const { errors: { InternalServerError } } = require('custom-error-exceptions');
 
 const throwIfMissing = (args, message) => {
   if(!args) {
