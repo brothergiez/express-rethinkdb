@@ -19,14 +19,24 @@ class BaseModel {
     return result;
   }
 
-  async find(payload = { index: this.orm.desc('id')} ) {
-    const result = await this.model.orderBy(payload).run();
+  async find(order = { index: this.orm.desc('id')}, skip = 0, limit=20 ) {
+    const result = await this.model.orderBy(order).skip(skip).limit(limit).run();
     return result;
   }
 
-  async findWithFilter(payload) {
-    const result = await this.model.filter(payload).run();
+  async findWithFilter(payload, skip = 0, limit=20) {
+    const result = await this.model.filter(payload).skip(skip).limit(limit).run();
     return result;
+  }
+
+  async updateById(id, payload) {
+    const update =  await this.model.get(id).update(payload).run();
+    return update;
+  }
+
+  async updateWithFilter(filter, payload) {
+    const update =  await this.model.filter(filter).update(payload).run();
+    return update;
   }
 }
 
